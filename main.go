@@ -1,10 +1,31 @@
 package gosfsampleplugin
 
 import (
-	f "github.com/ambelovsky/gosf"
+	"log"
+
+	"github.com/ambelovsky/gosf"
 )
 
-func init() {}
+func init() {
+	gosf.OnConnect(func(client *gosf.Client, request *gosf.Request) {
+		log.Println("Client connected.")
+	})
+	gosf.OnDisconnect(func(client *gosf.Client, request *gosf.Request) {
+		log.Println("Client disconnected.")
+	})
+	gosf.OnBeforeRequest(func(client *gosf.Client, request *gosf.Request) {
+		log.Println("Request received for " + request.Endpoint + " endpoint.")
+	})
+	gosf.OnAfterRequest(func(client *gosf.Client, request *gosf.Request, response *gosf.Message) {
+		log.Println("Request for " + request.Endpoint + " endpoint was processed by the controller.")
+	})
+	gosf.OnBeforeResponse(func(client *gosf.Client, request *gosf.Request, response *gosf.Message) {
+		log.Println("Response for " + request.Endpoint + " endpoint is being prepared.")
+	})
+	gosf.OnAfterResponse(func(client *gosf.Client, request *gosf.Request, response *gosf.Message) {
+		log.Println("Response for " + request.Endpoint + " endpoint was sent.")
+	})
+}
 
 /** ACCESSIBLE METHODS **/
 
@@ -26,27 +47,3 @@ func (p Plugin) Activate(app *map[string]interface{}, config *map[string]interfa
 
 // Deactivate is an aspect-oriented modular plugin requirement
 func (p Plugin) Deactivate(app *map[string]interface{}, config *map[string]interface{}) {}
-
-// Connect is an aspect-oriented modular plugin requirement
-func (p Plugin) Connect(request *f.Request) {
-}
-
-// Disconnect is an aspect-oriented modular plugin requirement
-func (p Plugin) Disconnect(request *f.Request) {
-}
-
-// PreReceive is an aspect-oriented modular plugin requirement
-func (p Plugin) PreRequest(request *f.Request) {
-}
-
-// PostReceive is an aspect-oriented modular plugin requirement
-func (p Plugin) PostRequest(request *f.Request, response *f.Message) {
-}
-
-// PreRespond is an aspect-oriented modular plugin requirement
-func (p Plugin) PreResponse(request *f.Request, response *f.Message) {
-}
-
-// PostRespond is an aspect-oriented modular plugin requirement
-func (p Plugin) PostResponse(request *f.Request, response *f.Message) {
-}
