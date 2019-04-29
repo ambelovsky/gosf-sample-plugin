@@ -36,17 +36,17 @@ func (p Plugin) Disconnect(request *f.Request) {
 }
 
 // PreReceive is an aspect-oriented modular plugin requirement
-func (p Plugin) PreReceive(request *f.Request) {
+func (p Plugin) PreRequest(request *f.Request) {
 }
 
 // PostReceive is an aspect-oriented modular plugin requirement
-func (p Plugin) PostReceive(request *f.Request) {
+func (p Plugin) PostRequest(request *f.Request, response *f.Message) {
 }
 
 // PreRespond is an aspect-oriented modular plugin requirement
-func (p Plugin) PreRespond(request *f.Request, serverMessage *f.Message) {
+func (p Plugin) PreResponse(request *f.Request, response *f.Message) {
 }
 
 // PostRespond is an aspect-oriented modular plugin requirement
-func (p Plugin) PostRespond(request *f.Request, serverMessage *f.Message) {
+func (p Plugin) PostResponse(request *f.Request, response *f.Message) {
 }
