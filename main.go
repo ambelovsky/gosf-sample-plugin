@@ -42,9 +42,8 @@ func init() {
 func getRoom(room string) string {
 	if room == "" {
 		return "all"
-	} else {
-		return room
 	}
+	return room
 }
 
 /** ACCESSIBLE METHODS **/
