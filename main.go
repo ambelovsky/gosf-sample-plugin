@@ -26,13 +26,13 @@ func init() {
 		log.Println("Response for " + request.Endpoint + " endpoint was sent.")
 	})
 	gosf.OnBeforeBroadcast(func(endpoint string, room string, response *gosf.Message) {
-		log.Println("Broadcast for " + endpoint + " endpoint was sent to " + getRoom(room) + ".")
+		log.Println("Broadcast for " + endpoint + " endpoint is preparing to send to " + getRoom(room) + ".")
 	})
 	gosf.OnAfterBroadcast(func(endpoint string, room string, response *gosf.Message) {
 		log.Println("Broadcast for " + endpoint + " endpoint was sent to " + getRoom(room) + ".")
 	})
 	gosf.OnBeforeClientBroadcast(func(client *gosf.Client, endpoint string, room string, response *gosf.Message) {
-		log.Println("Broadcast for " + endpoint + " endpoint was sent to " + getRoom(room) + ".")
+		log.Println("Broadcast for " + endpoint + " endpoint is preparing to send to " + getRoom(room) + ".")
 	})
 	gosf.OnAfterClientBroadcast(func(client *gosf.Client, endpoint string, room string, response *gosf.Message) {
 		log.Println("Broadcast for " + endpoint + " endpoint was sent to " + getRoom(room) + ".")
