@@ -25,6 +25,26 @@ func init() {
 	gosf.OnAfterResponse(func(client *gosf.Client, request *gosf.Request, response *gosf.Message) {
 		log.Println("Response for " + request.Endpoint + " endpoint was sent.")
 	})
+	gosf.OnBeforeBroadcast(func(endpoint string, room string, response *gosf.Message) {
+		log.Println("Broadcast for " + endpoint + " endpoint was sent to " + getRoom(room) + ".")
+	})
+	gosf.OnAfterBroadcast(func(endpoint string, room string, response *gosf.Message) {
+		log.Println("Broadcast for " + endpoint + " endpoint was sent to " + getRoom(room) + ".")
+	})
+	gosf.OnBeforeClientBroadcast(func(client *gosf.Client, endpoint string, room string, response *gosf.Message) {
+		log.Println("Broadcast for " + endpoint + " endpoint was sent to " + getRoom(room) + ".")
+	})
+	gosf.OnAfterClientBroadcast(func(client *gosf.Client, endpoint string, room string, response *gosf.Message) {
+		log.Println("Broadcast for " + endpoint + " endpoint was sent to " + getRoom(room) + ".")
+	})
+}
+
+func getRoom(room string) string {
+	if room == "" {
+		return "all"
+	} else {
+		return room
+	}
 }
 
 /** ACCESSIBLE METHODS **/
