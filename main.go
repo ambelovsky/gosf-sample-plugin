@@ -37,6 +37,8 @@ func init() {
 	gosf.OnAfterClientBroadcast(func(client *gosf.Client, endpoint string, room string, response *gosf.Message) {
 		log.Println("Broadcast for " + endpoint + " endpoint was sent to " + getRoom(room) + ".")
 	})
+
+	gosf.RegisterPlugin(new(Plugin))
 }
 
 func getRoom(room string) string {
@@ -48,11 +50,8 @@ func getRoom(room string) string {
 
 /** ACCESSIBLE METHODS **/
 
-// AppMethods is a struct optionally exposed to clients after the plugin has been registered
-type AppMethods struct{}
-
 // Echo returns the message it was given as a parameter
-func (a AppMethods) Echo(message string) string {
+func Echo(message string) string {
 	return message
 }
 
