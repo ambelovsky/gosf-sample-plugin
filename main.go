@@ -62,7 +62,7 @@ func (a AppMethods) Echo(message string) string {
 type Plugin struct{}
 
 // Activate is an aspect-oriented modular plugin requirement
-func (p Plugin) Activate(app *map[string]interface{}, config *map[string]interface{}) {}
+func (p Plugin) Activate(app *gosf.AppSettings) {}
 
 // Deactivate is an aspect-oriented modular plugin requirement
-func (p Plugin) Deactivate(app *map[string]interface{}, config *map[string]interface{}) {}
+func (p Plugin) Deactivate(app *gosf.AppSettings) {}
