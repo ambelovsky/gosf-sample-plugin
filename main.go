@@ -39,6 +39,7 @@ func init() {
 	})
 
 	gosf.RegisterPlugin(new(Plugin))
+	log.Println("Sample Plugin Initialized")
 }
 
 func getRoom(room string) string {
